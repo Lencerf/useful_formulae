@@ -1,0 +1,247 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{esdiff}
+\usepackage{commath}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1|}
+\begin{document}
+\title{Useful Formulas}
+\maketitle
+
+% Mathematics
+\section{Mathematics}
+\subsection{Approximation}
+\begin{equation}
+	\frac{C_N^k}{2^N}\approx\sqrt{\frac{2}{\pi N}}\exp(-\frac{2}{N}(k-\frac{N}{2})^2)
+\end{equation}
+
+% Classical Mechanics
+\section{Classical Mechanics}
+\subsection{Lagrangian mechanics}
+Lagrangian $\mathcal{L}(q,\dot q, t) = T - V$\par
+Lagrange's equations of the second kind
+\begin{equation}
+\label{eq:LagrangeEquation}
+\od{}{t}(\pd{\mathcal{L}}{\dot q_j})-\pd{\mathcal{L}}{q_j}=0
+\end{equation}
+
+\subsection{Hamiltonian mechanics}
+Hamiltonian $\mathcal{H}(q, p, t)=\sum_{i}\dot q_i p_i - \mathcal{L}$\\
+Generalized momentum $p_i = \pd{\mathcal{L}}{\dot q_i}$\\
+Hamilton's equations
+\begin{subequations}
+\begin{align}
+\dod{p_j}{t}&=-\dpd{\mathcal H}{q_j}\\
+\dod{q_j}{t}&=+\dpd{\mathcal H}{p_j}
+\end{align}
+\end{subequations}
+
+% Quantum Mechanics
+\section{Quantum Mechanics}
+\subsection{Angular Momentum}
+\subsubsection{Wigner-Eckhardt Theorem}
+Vector Operator $\vec V$ satisfies $[J_i, V_j]=i\hbar \epsilon_{ijk} V_k$ where $\vec J$ is the
+angular momentum. Then
+$$\bra{j,m^\prime}\vec V \ket{j,m}=
+\frac{\langle\vec V\cdot\vec J\rangle_j}{j(j+1)\hbar^2}\bra{j,m^\prime}\vec J\ket{j,m}$$
+where $J^2\ket{j,m}=j(j+1)\hbar^2\ket{j,m}$ and $J_z\ket{j,m}=m\hbar\ket{j,m}$.
+\subsection{Simple Harmonic Oscillator}
+\begin{equation}
+	H=-\frac{\hbar^2}{2m}\diff[2]{}{x}+\frac{1}{2}m\omega^2x^2
+\end{equation}
+Energy level
+\begin{equation}
+	E_n=(\frac{1}{2}+n)\hbar\omega,\ n=0,1,2...
+\end{equation}
+Wave function
+\begin{equation}
+	\phi_n(x)=\sqrt[4]{\frac{m\omega}{\hbar}}\sqrt{\frac{1}{2^nn!\sqrt{\pi}}}e^{-\frac{m\omega}{2\hbar}x^2}H_n(\sqrt{\frac{m\omega}{\hbar}}x)
+\end{equation}
+Ground state
+\begin{equation}
+	\phi_0(x)=\sqrt[4]{\frac{m\omega}{\pi\hbar}}e^{-\frac{m\omega}{2\hbar}x^2}
+\end{equation}
+\subsection{Hydrogen Atom}
+\subsubsection{Analytical Results}
+\begin{equation}
+H = -\frac{\hbar^2}{2m}\nabla^2-\frac{e^2}{4\pi\epsilon_0}\frac{1}r
+\end{equation}
+fine structure constant
+\begin{equation}
+\alpha = \frac{e^2}{4\pi\epsilon_0\hbar c}
+\end{equation}
+Bohr radius
+\begin{equation}
+a_0=\frac{4\pi\epsilon_0\hbar^2}{me^2}=\frac{\hbar}{mc\alpha}
+\end{equation}
+Energy level:
+\begin{equation}
+E_n=-\frac{e^2}{4\pi\epsilon_0}\frac{1}{2a_0n^2}=-\frac{mc^2\alpha^2}{2n^2},\ n=1,2,3...
+\end{equation}
+Radial wavefunctions
+\begin{equation}
+R_{nl}(r)=\sqrt{(\frac{2}{na_0})^3\frac{(n-l-1)!}{2n((n+l)!)^3}}e^{-\frac{r}{na_0}}(\frac{2r}{na_0})^lL_{n-l-1}^{2l+1}(\frac{2r}{na_0})
+\end{equation}
+\begin{equation}
+	R_{nl}(0)=\delta_{l0}\sqrt{\frac{4}{n^3a_0^3}}
+\end{equation}
+Ground state wave function
+\begin{equation}
+	\psi_{100}(\vec r)=\frac{1}{\sqrt{\pi}a_0^{3/2}}e^{-r/a_0}
+\end{equation}
+Some low lying radial wave functions
+\begin{subequations}
+\begin{align}
+	R_{10}(r)&=(\frac{1}{a_0})^{3/2}2e^{-r/a_0}\\
+	R_{20}(r)&=(\frac{1}{2a_0})^{3/2}(2-\frac{r}{a_0})e^{-r/2a_0}\\
+	R_{21}(r)&=(\frac{1}{2a_0})^{3/2}\frac{r}{\sqrt{3}a_0}e^{-r/2a_0}
+\end{align}
+\end{subequations}
+Expectations values:
+\begin{subequations}
+\begin{align}
+\langle \frac{1}{r}\rangle_{nl}&=\frac{1}{a_0}\\
+\langle \frac{1}{r^2}\rangle_{nl}&=\frac{1}{(l+\frac{1}{2})n^3a_0}
+\end{align}
+\end{subequations}
+\subsubsection{Fine structure}
+\begin{subequations}
+\begin{align}
+H_{kin}=mc^2\alpha^4(-\frac{p^4a_0^4}{8\hbar^4})\\
+H_\delta = mc^2\alpha^4\frac{\pi}{2}a_0^3\delta(\vec r)\\
+H_{SO} = mc^2\alpha^4\frac{a_0^3}{2r^3}\frac{\vec L \cdot \vec S}{\hbar^2}
+\end{align}
+\end{subequations}
+\begin{equation}
+\delta E_{nl_j}^{(fs)}=\frac{mc^2\alpha^4}{8n^4}(3-\frac{4n}{j+1/2})
+\end{equation}
+\subsubsection{Hyperfine structure}
+\begin{equation}
+H_{hyp}=-\frac{8\pi}{3}\vec{\mu_e}\cdot\vec{\mu_p}\delta^3(\vec{r})
+\end{equation}
+\begin{equation}
+\delta E^{hyp}=\frac{2}{3}mc^2\alpha^4\frac{m}{m_p}g_eg_p
+\end{equation}
+\subsection{Identical Particles}
+\subsubsection{Fermions}
+One body operator
+\begin{equation}
+\langle S \rangle = \sum_{\alpha}\bra{\alpha}s\ket{\alpha}
+\end{equation}
+Two body operator
+\begin{equation}
+\langle V \rangle = 
+\frac{1}{2}\sum_{\alpha, \beta}^{N}\bra{\alpha,\beta}v\ket{\alpha,\beta}-\bra{\alpha, \beta}v\ket{\beta,\alpha}
+\end{equation}
+where $\alpha$ and $\beta$ are occupied states.
+\subsection{Perturbation Theory}
+\subsubsection{Time independent}
+Non-degenerate case:
+\begin{align}
+E_n &= E_n^0+\bra{\phi_n}H_1\ket{\phi_n}+\sum_{m\ne n}\sum_{\alpha_m=1}^{g_m}\frac{|\bra{\phi_n}H_1\ket{\phi_{m,\alpha_m}}|^2}{E_n^0-E_m^0}+O(H_1^3)\\
+\ket{\psi_n}&=\ket{\phi_n}+\sum_{m\ne n}\sum_{\alpha=1}^{g_m}\frac{\ket{\phi_{m,\alpha_m}}\bra{\phi_{m,\alpha_m}}H_1\ket{\phi_n}}{E_n^0-E_m^0}+O(H_1^2)
+\end{align}
+Degenerate case:
+\begin{align}
+(\hat H_1)_{\alpha_n, \beta_n}&=\bra{\phi_{n, \alpha_n}}H_1\ket{\phi_{n, \beta_n}}\\
+(\hat H_2)_{\alpha_n, \beta_n}&=\sum_{m\ne n}\sum_{\gamma_m=1}^{g_m}\frac{\bra{\phi_{n,\alpha_n}}H_1\ket{\phi_{m,\gamma_m}}\bra{\phi_{m,\gamma_m}}H_1\ket{\phi_{n,\beta_n}}}{E_n^0-E_m^0}
+\end{align}
+\subsubsection{Time dependent}
+First order
+\begin{equation}
+\label{eq:1stTimeDependent}
+P_{fi}(t,t_0)=\left|\frac{1}{i\hbar}\int_{t_0}^{t}\dif t^\prime
+e^{\frac{i}{\hbar}(E_f-E_i)t^\prime}\bra{\phi_f}H_1(t^\prime)\ket{\phi_i}
+\right|^2
+\end{equation}
+
+% Statistical Mechanics
+\section{Statistical Mechanics}
+\subsection{Physical quantities}
+\begin{itemize}
+\item Internal energy $U$
+\item Enthalpy $H=U+PV$
+\item Temperature $\dfrac{1}{T}=k_B\dpd{\ln\Omega}{E}$
+\item Entropy $S=k_B\ln\Omega=-k_B\sum_i{p_i\ln p_i}$
+\item Helmholtz free energy $F=U-TS$
+\item Gibbs Free energy $G=U-TS+PV$
+\end{itemize}
+\subsection{Ensemble Theory}
+\subsubsection{Canonical ensemble}
+$$\dif U = T\dif S -p\dif V$$
+Canonical partition function
+\begin{equation}
+\label{eq:CanonicalPartitionFunction}
+Z=\sum_{l}\omega_l e^{-\beta E_{l}}
+\end{equation}
+where $\omega_l$ is the degeneracy of energy level $l$.\par
+Relations between partition functions and physical quantities
+\begin{itemize}
+\item internal energy $$U=-\pd{\ln Z}{\beta}$$
+\item Helmholtz function $$F=-\frac{\ln Z}{\beta}$$
+\end{itemize}
+
+\subsubsection{Grand canonical ensemble}
+$$\dif U = T\dif S - p\dif V +\mu\dif N$$
+Grand cannonical partition function
+\begin{equation}
+\label{eq:grandCanonicalPartitionFunction}
+\mathcal{Z} = \sum_{N}\sum_{l}\omega_l e^{\beta(\mu N-E_l)}
+\end{equation}
+Relations between partition functions and physical quantities
+\begin{itemize}
+\item internal energy $$U=-(\pd{\ln \mathcal{Z}}{\beta})_{\mu}+\mu N$$
+\item number of particles $$N=\frac{1}{\beta}(\pd{\ln\mathcal{Z}}{\mu})_{\beta}$$
+\item Grand potential $\dif \Phi_G=-S\dif T -p\dif V-N\dif\mu$
+ $$\Phi_G=-\frac{\ln \mathcal{Z}}{\beta}$$
+\end{itemize}
+
+
+\subsection{Ideal gas}
+Density of states for ideal gases in a box with periodic boundary condition:
+\begin{equation}
+g(k)\dif k=\frac{4\pi k^2 \dif k}{(2\pi L)^3}=\frac{Vk^2 \dif k}{2\pi^2}
+\end{equation}
+Single particle partition function
+\begin{equation}
+Z_1=\int_0^{\infty}e^{-\beta E}g(E)\pd{k}{E}\dif E=\frac{V}{\hbar^3}(\frac{mk_BT}{2\pi})^{3/2}
+\end{equation}
+Or,
+\begin{equation}
+Z_1=\frac{V}{\lambda_{th}^3}
+\end{equation}
+where $\lambda_{th}=\frac{\hbar}{\sqrt{2\pi m k_B T}}$.\par
+N-Particle partition function when the number of thermally accessible energy levels are much larger than 
+the number of particles in the gas:
+\begin{equation}
+Z_N=\frac{Z_1^N}{N!}
+\end{equation}
+Entropy $S$
+\begin{equation}
+S = N k_B(\frac{5}{2}-\ln(\frac{N}{V}\lambda_{th}^3))
+\end{equation}
+
+\subsection{Identical particles}
+Grand canonical partition function
+$$\ln\mathcal{Z} = \pm\sum_{l}\omega_l\ln(1\pm e^{\beta(\mu-E_l)})$$
+Average number of particles in each energy level (distribution function)
+$$\langle n_l \rangle = \frac{1}{e^{\beta(E_l-\mu)\pm 1}}$$
+where $+$ for fermions and $-$ for bosons.
+
+For bosons:
+$$\Omega_l = \frac{(a_l+\omega_l-1)!}{a_l!(\omega_l-1)!}$$
+For fermions:
+$$\Omega_l = \frac{\omega_l!}{a_l!(\omega_l-a_l)!}$$
+where $\Omega_l$ is the number of possible states on energy level $l$ when $a_l$ particles are occupying 
+that enegy level. 
+\end{document}
+
+
+
+
+
+
+
+
+
+
