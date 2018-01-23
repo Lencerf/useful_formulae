@@ -1,11 +1,17 @@
 \documentclass{article}
 \usepackage{amsmath}
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm} %页边距设置
 \usepackage{esdiff}
 \usepackage{commath}
+\usepackage{physics}
+\usepackage{esdiff}
+\iffalse
 \newcommand{\ket}[1]{|#1\rangle}
 \newcommand{\bra}[1]{\langle #1|}
+\fi
 \begin{document}
-\title{Useful Formulas}
+\title{Useful Formulae}
 \maketitle
 
 % Mathematics
@@ -39,6 +45,13 @@ Hamilton's equations
 % Quantum Mechanics
 \section{Quantum Mechanics}
 \subsection{Angular Momentum}
+\subsubsection{Ladder operator}
+\begin{equation}
+	J_{\pm} = J_x \pm i J_y
+\end{equation}
+\begin{equation}
+	J_\pm \ket{j,m}=\sqrt{j(j+1)-m(m\pm 1)}\hbar\ket{j,m\pm 1}
+\end{equation}
 \subsubsection{Wigner-Eckhardt Theorem}
 Vector Operator $\vec V$ satisfies $[J_i, V_j]=i\hbar \epsilon_{ijk} V_k$ where $\vec J$ is the
 angular momentum. Then
@@ -122,6 +135,15 @@ H_{hyp}=-\frac{8\pi}{3}\vec{\mu_e}\cdot\vec{\mu_p}\delta^3(\vec{r})
 \begin{equation}
 \delta E^{hyp}=\frac{2}{3}mc^2\alpha^4\frac{m}{m_p}g_eg_p
 \end{equation}
+
+\subsection{Particles in an EM field}
+\subsubsection{Magnetic moment}
+Magnetic moment $\vec\mu = \gamma\vec J$ where $\gamma = g \dfrac{q}{2m}$. $g$ is called \textit{g-value} or \textit{dimensionless magnetic moment}.\\
+If $J$ is an orbital angular momentum, then $g=1$. For electrons, $g=2$.\\
+Defining Bohr magneton $\mu_B = \dfrac{|q|\hbar}{2m}$, then $\vec\mu=g\dfrac{q}{|q|}\dfrac{\vec J}{\hbar}\mu_B $
+\subsubsection{A-B effect}
+Geometric phase = $\exp(i\dfrac{q}{\hbar}\displaystyle\int_{\vec r_0}^{r}\dd\vec{r^\prime}\cdot\vec A(\vec {r^\prime}))$
+
 \subsection{Identical Particles}
 \subsubsection{Fermions}
 One body operator
@@ -154,6 +176,11 @@ P_{fi}(t,t_0)=\left|\frac{1}{i\hbar}\int_{t_0}^{t}\dif t^\prime
 e^{\frac{i}{\hbar}(E_f-E_i)t^\prime}\bra{\phi_f}H_1(t^\prime)\ket{\phi_i}
 \right|^2
 \end{equation}
+\subsubsection{Adiabatic Approximation}
+\begin{equation}
+	c_{a\rightarrow b}^{AA} = \int_{t_0}^t d t^\prime \frac{\bra{\psi_b(t^\prime)} \dv{H(t^\prime)}{t^\prime} \ket{\psi_a(t^\prime)}}{E_b(t^\prime)-E_a(t^\prime)}e^{\frac{i}{\hbar}\int_{t_0}^{t^\prime}dt^{\prime\prime}[E_b(t^{\prime\prime})-E_a(t^{\prime\prime})]}e^{i\int_{t_0}^{t^\prime}dt^{\prime\prime}[\gamma_b(t^{\prime\prime})-\gamma_a(t^{\prime\prime})]}
+\end{equation}
+$i\gamma_b(t)=\bra{\psi_b(t)}\ket{\dv{\psi_b(t)}{t}}$
 
 % Statistical Mechanics
 \section{Statistical Mechanics}
@@ -186,21 +213,30 @@ $$\dif U = T\dif S - p\dif V +\mu\dif N$$
 Grand cannonical partition function
 \begin{equation}
 \label{eq:grandCanonicalPartitionFunction}
-\mathcal{Z} = \sum_{N}\sum_{l}\omega_l e^{\beta(\mu N-E_l)}
+\mathcal{Z} = \sum_{N}\sum_{l}\omega_l e^{-\beta(E(N,l)-N\mu)}=\sum_{N}e^{-\alpha N}Z_N
 \end{equation}
-Relations between partition functions and physical quantities
+where $\alpha = -\beta\mu$. Relations between partition functions and physical quantities
 \begin{itemize}
-\item internal energy $$U=-(\pd{\ln \mathcal{Z}}{\beta})_{\mu}+\mu N$$
-\item number of particles $$N=\frac{1}{\beta}(\pd{\ln\mathcal{Z}}{\mu})_{\beta}$$
+\item internal energy $$U=-\diffp*{\ln \mathcal{Z}}{\beta}{\mu, \alpha}$$
+\item number of particles $$N=\frac{1}{\beta} \diffp*{\ln \mathcal{Z}}{\mu}{\beta}$$
 \item Grand potential $\dif \Phi_G=-S\dif T -p\dif V-N\dif\mu$
  $$\Phi_G=-\frac{\ln \mathcal{Z}}{\beta}$$
 \end{itemize}
+Chemical potential as the single partile's Gibbs function
+\begin{equation}
+	G = N\mu
+\end{equation}
+Gibbs-Duhem equation
+\begin{equation}
+	\label{eq:Gibbs-Duhem-equation}
+	S\dd T-V\dd p+N\dd\mu = 0
+\end{equation}
 
 
 \subsection{Ideal gas}
 Density of states for ideal gases in a box with periodic boundary condition:
 \begin{equation}
-g(k)\dif k=\frac{4\pi k^2 \dif k}{(2\pi L)^3}=\frac{Vk^2 \dif k}{2\pi^2}
+g(k)\dif k=\frac{4\pi k^2 \dif k}{(2\pi /L)^3}=\frac{Vk^2 \dif k}{2\pi^2}
 \end{equation}
 Single particle partition function
 \begin{equation}
@@ -210,7 +246,7 @@ Or,
 \begin{equation}
 Z_1=\frac{V}{\lambda_{th}^3}
 \end{equation}
-where $\lambda_{th}=\frac{\hbar}{\sqrt{2\pi m k_B T}}$.\par
+where $\lambda_{th}=\frac{h}{\sqrt{2\pi m k_B T}}$.\par
 N-Particle partition function when the number of thermally accessible energy levels are much larger than 
 the number of particles in the gas:
 \begin{equation}
@@ -223,9 +259,9 @@ S = N k_B(\frac{5}{2}-\ln(\frac{N}{V}\lambda_{th}^3))
 
 \subsection{Identical particles}
 Grand canonical partition function
-$$\ln\mathcal{Z} = \pm\sum_{l}\omega_l\ln(1\pm e^{\beta(\mu-E_l)})$$
+$$\ln\mathcal{Z} = \pm\sum_{l}\omega_l\ln(1\pm e^{-\beta(E_l-\mu)})$$
 Average number of particles in each energy level (distribution function)
-$$\langle n_l \rangle = \frac{1}{e^{\beta(E_l-\mu)\pm 1}}$$
+$$\langle n_l \rangle = \frac{1}{e^{\beta(E_l-\mu)}\pm 1}$$
 where $+$ for fermions and $-$ for bosons.
 
 For bosons:
@@ -234,6 +270,7 @@ For fermions:
 $$\Omega_l = \frac{\omega_l!}{a_l!(\omega_l-a_l)!}$$
 where $\Omega_l$ is the number of possible states on energy level $l$ when $a_l$ particles are occupying 
 that enegy level. 
+
 \end{document}
 
 
